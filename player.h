@@ -48,6 +48,7 @@ class player
     //User in the constructor.
     void choose_name(bool redo = 0);
     void choose_sex(bool redo = 0);
+    void choose_class(bool redo = 0);
 
   	//Deconstructor
   	~player();
@@ -63,6 +64,9 @@ class player
 
   	//Returns gender
   	bool gender();
+
+    //Returns a class and sex.
+    string class_sex();
 
   	//Returns he/she
   	string he();
