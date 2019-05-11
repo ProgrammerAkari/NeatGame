@@ -136,7 +136,7 @@ void player::choose_class(bool redo)
 {
   string input;
   cout << "Alright, and what's yer profession?" << endl;
-  cout << "  1. Chef\n" << "  2. Strong" << man() << "\n  3. Mage." << endl;
+  cout << "  1. Chef\n" << "  2. Strong" << man() << "\n  3. Mage" << endl;
   getline(cin, input);
   boost::to_upper(input);
   if(input == "1")
@@ -145,7 +145,7 @@ void player::choose_class(bool redo)
     cin >> input;
     if(yn(input))
     {
-      p_class = "chef";
+      p_class = "Chef";
       return;
     }
   }
@@ -155,7 +155,7 @@ void player::choose_class(bool redo)
     cin >> input;
     if(yn(input))
     {
-      p_class = "strong";
+      p_class = "Strong";
       return;
     }
   }
@@ -165,7 +165,7 @@ void player::choose_class(bool redo)
     cin >> input;
     if(yn(input))
     {
-      p_class = "mage";
+      p_class = "Mage";
       return;
     }
   }
@@ -189,8 +189,8 @@ player::~player()
 //Returns string dependent on sex and class.
 string player::class_sex()
 {
-  if(p_class == "strong")
-    return "strong" + man();
+  if(p_class == "Strong")
+    return "Strong" + man();
   else
     return p_class + " " + man();
 }
@@ -215,4 +215,51 @@ string player::his()
   if(sex)
     return "his";
   return "her";
+}
+
+string player::male()
+{
+  if(sex)
+    return "male";
+  return "female";
+}
+
+//Sets private values publicly.
+void player::s_name(string new_name)
+{
+  name = new_name;
+  return;
+}
+
+void player::s_sex(bool new_sex)
+{
+  sex = new_sex;
+  return;
+}
+
+void player::s_class(string new_class)
+{
+  p_class = new_class;
+  return;
+}
+
+//Returns private variables.
+
+string player::g_name()
+{
+  return name;
+}
+
+bool player::g_sex()
+{
+  return sex;
+}
+
+string player::g_class()
+{
+  if(p_class == "Strong")
+  {
+    return class_sex();
+  }
+  return p_class;
 }

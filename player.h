@@ -41,6 +41,9 @@ class player
   	//Inv
   	inventory p_inventory;
 
+  	//Current position
+  	int pos[2] = {0, 0};
+
   public:
   	//Constructor
   	player();
@@ -53,17 +56,15 @@ class player
   	//Deconstructor
   	~player();
 
-  	//Sets name
-  	void s_name(string name);
+  	//Sets private variables.
+  	void s_name(string new_name);
+  	void s_sex(bool new_sex);
+  	void s_class(string new_class);
 
-	  //Sets gender
-  	void s_gender(bool gender);
-
-  	//Returns name
+  	//Returns private variables.
   	string g_name();
-
-  	//Returns gender
-  	bool gender();
+  	bool g_sex();
+  	string g_class();
 
     //Returns a class and sex.
     string class_sex();
@@ -77,11 +78,17 @@ class player
   	//Returns man/woman
   	string man();
 
+    //Returns male/female
+    string male();
+
 
 };
 
+bool yn(string input);
+
 #include "player.hpp"
+#include "status.hpp"
 
 #endif
 
-bool yn(string input);
+
