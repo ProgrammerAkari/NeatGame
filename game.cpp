@@ -1,8 +1,8 @@
 #include "player.h"
 
-int main
+int main()
 {
   cout << "Creating player." << endl;
-  player player();
+  player me;
   return 0;
 }
