@@ -24,3 +24,25 @@ void help()
   cout << "q OR quit exits the game" << endl;
   return;
 }
+
+//Checks to see if an input is valid.
+void check_input(string input, player player, bool &has_quit)
+{
+  boost::to_upper(input);
+  if(input == "S" || input == "STATUS")
+  {
+    status(player);
+    return;
+  }
+  if(input == "H" || input == "HELP")
+  {
+    help();
+    return;
+  }
+  if(input == "Q" || input == "QUIT")
+  {
+    quit(has_quit);
+    return;
+  }
+  cout << input << " is an invalid command. Type help for a list of commands." << endl;
+}

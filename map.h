@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include <iostream>
+#include "termcolor.hpp"
 
 //Holds a single area's map.
 class tile_map
@@ -17,9 +18,13 @@ class tile_map
     //Deconstructor
     ~tile_map();
 
+    //Change tiles
     void map_fill(char tile);
+    void tile_range(int col1, int col2, int row1, int row2, char tile);
+    void tile_change(int col, int row, char tile);
 
-    void map_print();
+    //Prints the map
+    void print();
 };
 
 #include "map.hpp"
