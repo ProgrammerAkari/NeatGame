@@ -16,6 +16,15 @@ bool yn(string input)
   }
 }
 
+//Quick constructor
+
+player::player(string n, bool s, string ass)
+{
+  name = n;
+  sex = s;
+  p_class = ass;
+  return;
+}
 //Constructor and the needed functions.
 player::player()
 {
@@ -262,4 +271,13 @@ string player::g_class()
     return class_sex();
   }
   return p_class;
+}
+
+//Moves the player.
+
+void player::move(int row, int col)
+{
+  pos[0] = row;
+  pos[1] = col;
+  return;
 }

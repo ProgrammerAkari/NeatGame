@@ -41,13 +41,12 @@ class player
   	//Inv
   	inventory p_inventory;
 
-  	//Current position
-  	int pos[2] = {0, 0};
-
   public:
-  	//Constructor
+    //Current position
+  	int pos[2] = {0, 0};
+  	//Constructors
   	player();
-
+    player(string n, bool s, string ass);
     //User in the constructor.
     void choose_name(bool redo = 0);
     void choose_sex(bool redo = 0);
@@ -81,6 +80,8 @@ class player
     //Returns male/female
     string male();
 
+     //Moves the player.
+     void move(int row, int col);
 
 };
 
