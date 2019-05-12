@@ -1,9 +1,21 @@
+//Creates a tile.
+tile::tile(char display, string n, string c, bool pass)
+{
+  display_char = display;
+  name = n;
+  color = c;
+  passable = pass;
+  return;
+}
+
+
+
 tile_map::tile_map(int cols, int rows)
 {
   //Builds map
-  m_map = new char*[rows];
+  m_map = new tile*[rows];
   for(int i = 0; i < rows; ++i)
-    m_map[i] = new char[cols];
+    m_map[i] = new tile[cols];
   m_cols = cols;
   m_rows = rows;
   return;
@@ -19,7 +31,7 @@ tile_map::~tile_map()
 }
 
 //Fills the map with a single tile.
-void tile_map::map_fill(char tile)
+void tile_map::map_fill(tile tile)
 {
   for(int i = 0; i < m_rows; ++i)
   {
@@ -31,7 +43,7 @@ void tile_map::map_fill(char tile)
 }
 
 //Changes a selected range of tiles.
-void tile_map::tile_range(int col1, int col2, int row1, int row2, char tile)
+void tile_map::tile_range(int col1, int col2, int row1, int row2, tile tile)
 {
   //Swaps the row/column inputs if needed.
   if(col1 > col2)
@@ -59,7 +71,7 @@ void tile_map::tile_range(int col1, int col2, int row1, int row2, char tile)
   return;
 }
 //Changes a single tile.
-void tile_map::tile_change(int col, int row, char tile)
+void tile_map::tile_change(int col, int row, tile tile)
 {
   //Invalid coord errors
   if(col > m_cols - 1 || col < 0)
@@ -83,15 +95,10 @@ void tile_map::print()
   {
     for(int j = 0; j < m_cols; ++j)
     {
-      bool output = 0;
-      char tile = m_map[i][j];
-      if(tile == 'T' || tile == 'g')
-      {
-        std::cout << termcolor::green << tile << termcolor::reset;
-        output = 1;
-      }
-      if(!output)
-        std::cout << tile;
+      if(m_map[i][j].color == "green")
+        std::cout << termcolor::green << m_map[i][j].display_char << termcolor::reset;
+      if(m_map[i][j].color == "black")
+        std::cout << m_map[i][j].display_char;
     }
     std::cout << endl;
   }
